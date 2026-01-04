@@ -1,0 +1,73 @@
+.log-area {
+  overflow: auto;
+}
+
+:root {
+  --sidebar-width: 250px;
+  --sidebar-collapsed-width: 60px;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: #f8f9fa;
+  overflow-x: hidden;
+}
+
+#wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: linear-gradient(180deg, #4e73df 0%, #224abe 100%);
+  width: var(--sidebar-width);
+  min-height: 100vh;
+  transition: all 0.3s ease;
+  position: fixed;
+  z-index: 100;
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+}
+
+.sidebar-collapsed {
+  width: var(--sidebar-collapsed-width);
+}
+
+.sidebar-content {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.sidebar-collapsed .sidebar-content {
+  opacity: 0;
+  height: 0;
+  padding: 0;
+}
+
+#content-wrapper {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  transition: margin-left 0.3s ease;
+}
+
+.sidebar-collapsed + #content-wrapper {
+  margin-left: var(--sidebar-collapsed-width);
+}
+
+html {
+}
+
+.log-area {
+  overflow: auto;
+}
+
+.badge-primary {
+}
+
+.btn {
+}
+
+.accordion-header {
+}
+

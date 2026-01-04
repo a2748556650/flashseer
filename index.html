@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>seer</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row gx-sm-0">
+            <div class="col d-flex">
+                <h1 class="d-flex align-items-center mb-0 h3 text-gray-800" id="login-status-text" style="width: 350px;height: 50px;">米米号:</h1>
+                <div class="ms-auto" style="width: 50px;height: 50px;" data-bs-toggle="modal" data-bs-target="#loginModal"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style="font-size: 50px;">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7ZM14 7C14 8.10457 13.1046 9 12 9C10.8954 9 10 8.10457 10 7C10 5.89543 10.8954 5 12 5C13.1046 5 14 5.89543 14 7Z" fill="currentColor"></path>
+                        <path d="M16 15C16 14.4477 15.5523 14 15 14H9C8.44772 14 8 14.4477 8 15V21H6V15C6 13.3431 7.34315 12 9 12H15C16.6569 12 18 13.3431 18 15V21H16V15Z" fill="currentColor"></path>
+                    </svg></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-4 col-xxl-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="d-flex align-items-center"><img class="pet-avatar" width="60" height="60" src="assets/img/1400692.png">
+                                    <div class="flex-grow-1 ms-3">
+                                        <h6 class="mb-2">云境归真·始祖灵兽<br>Lv. 100</h6>
+                                        <div class="progress" style="height:20px;">
+                                            <div class="progress-bar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" role="progressbar" style="width:85%;">85%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3 pt-3 border-top" style="min-height:250px;">
+                                    <div style="min-height: 210px;margin: 0px;padding: 0px;"></div>
+                                    <div class="d-flex justify-content-end"><button class="btn btn-primary" type="button" style="padding: 0px;height: 24px;">撤退</button></div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center"><img class="pet-avatar" src="assets/img/1400692.png" width="60" height="60">
+                                    <div class="flex-grow-1 ms-3">
+                                        <h6 class="mb-2">云境归真·始祖灵兽 Lv. 100</h6>
+                                        <div class="progress" style="height:20px;">
+                                            <div class="progress-bar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" role="progressbar" style="width:85%;">85%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3 pt-3 border-top" style="min-height:250px;">
+                                    <div style="min-height: 210px;margin: 0px;padding: 0px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-xxl-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6 class="text-primary m-0 font-weight-bold">系统日志</h6><button class="btn btn-outline-secondary btn-sm" id="clear-log-btn"><i class="fas fa-trash-alt me-1"></i>清空 </button>
+                        </div>
+                        <div class="mt-3 pt-3 border-top" id="log-content-area" style="min-height: 280px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-xxl-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6 class="text-primary m-0 font-weight-bold">功能</h6><button class="btn btn-primary btn-sm" id="select-all-btn" type="button">全选</button><button class="btn btn-outline-secondary btn-sm" id="clear-selection-btn">清空 </button><button class="btn btn-primary btn-sm" id="add-selected-btn" type="button">添加</button>
+                            <div class="input-group" style="width: 120px;"><input class="form-control" type="text" id="feature-search-input" placeholder="请输入关键词"></div>
+                        </div>
+                        <div class="overflow-y-auto mt-3 border-top" style="height: 300px;">
+                            <div class="d-flex justify-content-center align-items-center"><span class="me-2">Flash</span>
+                                <div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="mode-switch"><label class="form-check-label" for="formCheck-1">Unity</label></div>
+                            </div>
+                            <div class="accordion pe-0 mt-0 pt-0" role="tablist" id="accordion-flash">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header d-flex align-items-center" role="tab" onclick="event.stopPropagation();"><input class="me-2 form-check-input task-checkbox" type="checkbox" onclick="event.stopPropagation();" style="margin: 0px;"><button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-flash .item-1" aria-expanded="false" aria-controls="accordion-flash .item-1">学习力战场</button></h2>
+                                    <div class="accordion-collapse collapse item-1" role="tabpanel" data-bs-parent="#accordion-flash">
+                                        <div class="accordion-body">
+                                            <p class="mb-0">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header d-flex align-items-center" role="tab" onclick="event.stopPropagation();"><input class="me-2 form-check-input task-checkbox" type="checkbox" onclick="event.stopPropagation();" style="margin: 0px;"><button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-flash .item-2" aria-expanded="false" aria-controls="accordion-flash .item-2">学习力战场</button></h2>
+                                    <div class="accordion-collapse collapse item-2" role="tabpanel" data-bs-parent="#accordion-flash">
+                                        <div class="accordion-body">
+                                            <p class="mb-0">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header d-flex align-items-center" role="tab" onclick="event.stopPropagation();"><input class="me-2 form-check-input task-checkbox" type="checkbox" onclick="event.stopPropagation();" style="margin: 0px;"><button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-flash .item-3" aria-expanded="false" aria-controls="accordion-flash .item-3">学习力战场</button></h2>
+                                    <div class="accordion-collapse collapse item-3" role="tabpanel" data-bs-parent="#accordion-flash">
+                                        <div class="accordion-body">
+                                            <p class="mb-0">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header d-flex align-items-center" role="tab" onclick="event.stopPropagation();"><input class="me-2 form-check-input task-checkbox" type="checkbox" onclick="event.stopPropagation();" style="margin: 0px;"><button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-flash .item-4" aria-expanded="false" aria-controls="accordion-flash .item-4">学习力战场</button></h2>
+                                    <div class="accordion-collapse collapse item-4" role="tabpanel" data-bs-parent="#accordion-flash">
+                                        <div class="accordion-body">
+                                            <p class="mb-0">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header d-flex align-items-center" role="tab" onclick="event.stopPropagation();"><input class="me-2 form-check-input task-checkbox" type="checkbox" onclick="event.stopPropagation();" style="margin: 0px;"><button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-flash .item-5" aria-expanded="false" aria-controls="accordion-flash .item-5">学习力战场</button></h2>
+                                    <div class="accordion-collapse collapse item-5" role="tabpanel" data-bs-parent="#accordion-flash">
+                                        <div class="accordion-body">
+                                            <p class="mb-0">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header d-flex align-items-center" role="tab" onclick="event.stopPropagation();"><input class="me-2 form-check-input task-checkbox" type="checkbox" onclick="event.stopPropagation();" style="margin: 0px;"><button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-flash .item-6" aria-expanded="false" aria-controls="accordion-flash .item-6">学习力战场</button></h2>
+                                    <div class="accordion-collapse collapse item-6" role="tabpanel" data-bs-parent="#accordion-flash">
+                                        <div class="accordion-body">
+                                            <p class="mb-0">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header d-flex align-items-center" role="tab" onclick="event.stopPropagation();"><input class="me-2 form-check-input task-checkbox" type="checkbox" onclick="event.stopPropagation();" style="margin: 0px;"><button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-flash .item-7" aria-expanded="false" aria-controls="accordion-flash .item-7">学习力战场</button></h2>
+                                    <div class="accordion-collapse collapse item-7" role="tabpanel" data-bs-parent="#accordion-flash">
+                                        <div class="accordion-body">
+                                            <p class="mb-0">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion d-none pe-0 mt-0 pt-0" role="tablist" id="accordion-unity">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header d-flex align-items-center" role="tab" onclick="event.stopPropagation();"><input class="me-2 form-check-input task-checkbox" type="checkbox" onclick="event.stopPropagation();" style="margin: 0px;"><button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-unity .item-1" aria-expanded="false" aria-controls="accordion-unity .item-1">学习力战场1</button></h2>
+                                    <div class="accordion-collapse collapse item-1" role="tabpanel" data-bs-parent="#accordion-unity">
+                                        <div class="accordion-body">
+                                            <p class="mb-0">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header d-flex align-items-center" role="tab" onclick="event.stopPropagation();"><input class="me-2 form-check-input task-checkbox" type="checkbox" onclick="event.stopPropagation();" style="margin: 0px;"><button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-unity .item-2" aria-expanded="false" aria-controls="accordion-unity .item-2">1</button></h2>
+                                    <div class="accordion-collapse collapse item-2" role="tabpanel" data-bs-parent="#accordion-unity">
+                                        <div class="accordion-body">
+                                            <p class="mb-0">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header d-flex align-items-center" role="tab" onclick="event.stopPropagation();"><input class="me-2 form-check-input task-checkbox" type="checkbox" onclick="event.stopPropagation();" style="margin: 0px;"><button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-unity .item-3" aria-expanded="false" aria-controls="accordion-unity .item-3">学习力战场</button></h2>
+                                    <div class="accordion-collapse collapse item-3" role="tabpanel" data-bs-parent="#accordion-unity">
+                                        <div class="accordion-body">
+                                            <p class="mb-0">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header d-flex align-items-center" role="tab" onclick="event.stopPropagation();"><input class="me-2 form-check-input task-checkbox" type="checkbox" onclick="event.stopPropagation();" style="margin: 0px;"><button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-unity .item-4" aria-expanded="false" aria-controls="accordion-unity .item-4">学习力战场</button></h2>
+                                    <div class="accordion-collapse collapse item-4" role="tabpanel" data-bs-parent="#accordion-unity">
+                                        <div class="accordion-body">
+                                            <p class="mb-0">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header d-flex align-items-center" role="tab" onclick="event.stopPropagation();"><input class="me-2 form-check-input task-checkbox" type="checkbox" onclick="event.stopPropagation();" style="margin: 0px;"><button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-unity .item-5" aria-expanded="false" aria-controls="accordion-unity .item-5">学习力战场</button></h2>
+                                    <div class="accordion-collapse collapse item-5" role="tabpanel" data-bs-parent="#accordion-unity">
+                                        <div class="accordion-body">
+                                            <p class="mb-0">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header d-flex align-items-center" role="tab" onclick="event.stopPropagation();"><input class="me-2 form-check-input task-checkbox" type="checkbox" onclick="event.stopPropagation();" style="margin: 0px;"><button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-unity .item-6" aria-expanded="false" aria-controls="accordion-unity .item-6">学习力战场</button></h2>
+                                    <div class="accordion-collapse collapse item-6" role="tabpanel" data-bs-parent="#accordion-unity">
+                                        <div class="accordion-body">
+                                            <p class="mb-0">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header d-flex align-items-center" role="tab" onclick="event.stopPropagation();"><input class="me-2 form-check-input task-checkbox" type="checkbox" onclick="event.stopPropagation();" style="margin: 0px;"><button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-unity .item-7" aria-expanded="false" aria-controls="accordion-unity .item-7">学习力战场</button></h2>
+                                    <div class="accordion-collapse collapse item-7" role="tabpanel" data-bs-parent="#accordion-unity">
+                                        <div class="accordion-body">
+                                            <p class="mb-0">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-sm-auto col-md-6 col-xxl-5">
+                <div class="card h-100">
+                    <div class="card-body d-flex flex-column justify-content-around">
+                        <div class="row">
+                            <div class="col d-flex justify-content-between align-items-center" style="padding: 0px;">
+                                <h6 class="text-dark d-flex justify-content-center align-items-center m-0 font-weight-bold">出战背包</h6>
+                                <div><button class="btn btn-primary btn-sm" id="sendPacketBtn" type="button" style="width: 80px;">获取背包</button></div>
+                            </div>
+                        </div>
+                        <div class="row d-flex">
+                            <div class="col-auto col-xxl-12 d-flex" id="chuzhan-beibao" style="padding: 0px;">
+                                <div class="d-flex flex-column align-items-center col">
+                                    <div class="d-flex justify-content-center"><img class="img-fluid pet-icon" width="200" height="200" style="width: 50px;height: 50px;" src="assets/img/1400692.png">
+                                        <div class="text-white bg-primary rounded d-flex align-items-center"></div>
+                                    </div>
+                                    <div class="d-flex flex-column align-items-center"><span>Lv.100</span><span class="text-break font-weight-bold" style="font-size: 12px;">云境归真·云境归真</span></div>
+                                </div>
+                                <div class="d-flex flex-column align-items-center col">
+                                    <div class="d-flex justify-content-center"><img class="img-fluid pet-icon" width="200" height="200" style="width: 50px;height: 50px;" src="assets/img/1400692.png">
+                                        <div class="text-white bg-primary rounded d-flex align-items-center"></div>
+                                    </div>
+                                    <div class="d-flex flex-column align-items-center"><span>Lv.100</span><span class="text-break font-weight-bold" style="font-size: 12px;">云境归真·云境归真</span></div>
+                                </div>
+                                <div class="d-flex flex-column align-items-center col">
+                                    <div class="d-flex justify-content-center"><img class="img-fluid pet-icon" width="200" height="200" style="width: 50px;height: 50px;" src="assets/img/1400692.png">
+                                        <div class="text-white bg-primary rounded d-flex align-items-center"></div>
+                                    </div>
+                                    <div class="d-flex flex-column align-items-center"><span>Lv.100</span><span class="text-break font-weight-bold" style="font-size: 12px;">云境归真·云境归真</span></div>
+                                </div>
+                                <div class="d-flex flex-column align-items-center col">
+                                    <div class="d-flex justify-content-center"><img class="img-fluid pet-icon" width="200" height="200" style="width: 50px;height: 50px;" src="assets/img/1400692.png">
+                                        <div class="text-white bg-primary rounded d-flex align-items-center"></div>
+                                    </div>
+                                    <div class="d-flex flex-column align-items-center"><span>Lv.100</span><span class="text-break font-weight-bold" style="font-size: 12px;">云境归真·云境归真</span></div>
+                                </div>
+                                <div class="d-flex flex-column align-items-center col">
+                                    <div class="d-flex justify-content-center"><img class="img-fluid pet-icon" width="200" height="200" style="width: 50px;height: 50px;" src="assets/img/1400692.png">
+                                        <div class="text-white bg-primary rounded d-flex align-items-center"></div>
+                                    </div>
+                                    <div class="d-flex flex-column align-items-center"><span>Lv.100</span><span class="text-break font-weight-bold" style="font-size: 12px;">云境归真·云境归真</span></div>
+                                </div>
+                                <div class="d-flex flex-column align-items-center col">
+                                    <div class="d-flex justify-content-center"><img class="img-fluid pet-icon" width="200" height="200" style="width: 50px;height: 50px;" src="assets/img/1400692.png">
+                                        <div class="text-white bg-primary rounded d-flex align-items-center"></div>
+                                    </div>
+                                    <div class="d-flex flex-column align-items-center"><span>Lv.100</span><span class="text-break font-weight-bold" style="font-size: 12px;">云境归真·云境归真</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col d-flex justify-content-between align-items-center" style="padding: 0px;">
+                                <h6 class="text-dark d-flex justify-content-center align-items-center m-0 font-weight-bold">待命背包</h6>
+                                <div></div>
+                            </div>
+                        </div>
+                        <div class="row d-flex">
+                            <div class="col-auto col-xxl-12 d-flex" id="daiming-beibao" style="padding: 0px;">
+                                <div class="d-flex flex-column align-items-center col">
+                                    <div class="d-flex justify-content-center"><img class="img-fluid pet-icon" width="200" height="200" style="width: 50px;height: 50px;" src="assets/img/1400692.png">
+                                        <div class="text-white bg-primary rounded d-flex align-items-center"></div>
+                                    </div>
+                                    <div class="d-flex flex-column align-items-center"><span>Lv.100</span><span class="text-break font-weight-bold" style="font-size: 12px;">云境归真·云境归真</span></div>
+                                </div>
+                                <div class="d-flex flex-column align-items-center col">
+                                    <div class="d-flex justify-content-center"><img class="img-fluid pet-icon" width="200" height="200" style="width: 50px;height: 50px;" src="assets/img/1400692.png">
+                                        <div class="text-white bg-primary rounded d-flex align-items-center"></div>
+                                    </div>
+                                    <div class="d-flex flex-column align-items-center"><span>Lv.100</span><span class="text-break font-weight-bold" style="font-size: 12px;">云境归真·云境归真</span></div>
+                                </div>
+                                <div class="d-flex flex-column align-items-center col">
+                                    <div class="d-flex justify-content-center"><img class="img-fluid pet-icon" width="200" height="200" style="width: 50px;height: 50px;" src="assets/img/1400692.png">
+                                        <div class="text-white bg-primary rounded d-flex align-items-center"></div>
+                                    </div>
+                                    <div class="d-flex flex-column align-items-center"><span>Lv.100</span><span class="text-break font-weight-bold" style="font-size: 12px;">云境归真·云境归真</span></div>
+                                </div>
+                                <div class="d-flex flex-column align-items-center col">
+                                    <div class="d-flex justify-content-center"><img class="img-fluid pet-icon" width="200" height="200" style="width: 50px;height: 50px;" src="assets/img/1400692.png">
+                                        <div class="text-white bg-primary rounded d-flex align-items-center"></div>
+                                    </div>
+                                    <div class="d-flex flex-column align-items-center"><span>Lv.100</span><span class="text-break font-weight-bold" style="font-size: 12px;">云境归真·云境归真</span></div>
+                                </div>
+                                <div class="d-flex flex-column align-items-center col">
+                                    <div class="d-flex justify-content-center"><img class="img-fluid pet-icon" width="200" height="200" style="width: 50px;height: 50px;" src="assets/img/1400692.png">
+                                        <div class="text-white bg-primary rounded d-flex align-items-center"></div>
+                                    </div>
+                                    <div class="d-flex flex-column align-items-center"><span>Lv.100</span><span class="text-break font-weight-bold" style="font-size: 12px;">云境归真·云境归真</span></div>
+                                </div>
+                                <div class="d-flex flex-column align-items-center col">
+                                    <div class="d-flex justify-content-center"><img class="img-fluid pet-icon" width="200" height="200" style="width: 50px;height: 50px;" src="assets/img/1400692.png">
+                                        <div class="text-white bg-primary rounded d-flex align-items-center"></div>
+                                    </div>
+                                    <div class="d-flex flex-column align-items-center"><span>Lv.100</span><span class="text-break font-weight-bold" style="font-size: 12px;">云境归真·云境归真</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-sm-auto col-md-4 col-xxl-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6 class="text-primary m-0 font-weight-bold">我的日常</h6><button class="btn btn-primary btn-sm" type="button" style="width: 80px;">一键日常</button><button class="btn btn-primary btn-sm" type="button" style="width: 60px;">保存</button><button class="btn btn-outline-secondary btn-sm" id="clear-log-btn1"><i class="fas fa-trash-alt me-1"></i>清空 </button>
+                        </div>
+                        <div class="overflow-auto mt-3 pt-3 log-area" style="height:250px;">
+                            <div class="accordion" role="tablist" id="accordion-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-sm-auto col-md-6 col-xxl-3">
+                <div class="card h-100">
+                    <div class="card-body d-flex flex-column">
+                        <div class="d-flex justify-content-start align-items-center">
+                            <h6 class="text-dark d-flex justify-content-center align-items-center m-0 font-weight-bold">测试发包</h6>
+                            <div class="d-flex ms-auto"><button class="btn btn-primary btn-sm" id="sendPacketBtn-1" type="button" style="width: 60px;">发包</button></div>
+                            <div class="ms-2"><button class="btn btn-outline-secondary btn-sm" id="clear-log-btn3"><i class="fas fa-trash-alt me-1"></i>清空 </button></div>
+                        </div>
+                        <div class="flex-grow-1 mt-3 pt-3 border-top" style="min-height:250px;min-width:250px"><textarea class="border w-100 h-100 flex-grow-1" id="packetTextArea"></textarea></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="loginModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title text-center w-100">登录</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row align-items-center">
+                        <div class="col-6 col-md-6">
+                            <form class="w-100 user" id="login-form" action="/start-login" method="post">
+                                <div class="mb-3">
+                                    <div class="input-group dropdown-full-width"><input class="form-control form-control form-control-user" type="text" id="usernameInput" name="account" placeholder="米米号">
+                                        <div class="dropdown show"><button class="btn btn-primary dropdown-toggle rounded-0 rounded-end" aria-expanded="true" data-bs-toggle="dropdown" id="down1" type="button" style="width: 34px;" data-bs-display="static"></button>
+                                            <div class="dropdown-menu show" data-bs-popper="none" aria-labelledby="down1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-1"><input class="form-control form-control form-control-user" type="password" id="passwordInput" name="password" placeholder="密码"></div>
+                                <div class="d-flex justify-content-center align-items-center"><span class="me-2">Flash</span>
+                                    <div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="mode-switch-1"><label class="form-check-label" for="mode-switch-1">Unity</label></div>
+                                </div>
+                                <div class="d-flex justify-content-center mb-3"><button class="btn btn-primary btn-user" id="generateIniBtn" type="Submit" style="width: 130px;">登录</button></div>
+                                <div class="d-flex justify-content-between"><a class="link-dark small" href="#">忘记密码？</a><a class="link-dark small" href="#">注册账号</a></div>
+                            </form>
+                        </div>
+                        <div class="col-6 col-md-6 justify-content-center" style="background: #ffffff;">
+                            <div id="suit-container" data-bs-toggle="modal" data-bs-target="#suitSelectorModal"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="d-flex align-items-center mb-3"><select id="hour-select"></select><span class="mx-2">:</span><select id="minute-select"></select></div>
+                        <div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">开启每日定时日常</label></div>
+                    </div><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="suitSelectorModal">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">套装切换</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-4"><input class="form-control-sm" type="text" id="input-suit" placeholder="搜索套装" style="width: 100%;">
+                            <div class="overflow-scroll" id="list-suit" style="height: 300px;margin-top: 2px;padding: 2px;">
+                                <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-2" name="suit_group"><label class="form-check-label" for="formCheck-2">苍星战甲</label></div>
+                            </div>
+                        </div>
+                        <div class="col-4"><input class="form-control-sm" type="text" id="input-equip" placeholder="搜索面具" style="width: 100%;">
+                            <div class="overflow-scroll" id="list-equip" style="height: 300px;margin-top: 2px;padding: 2px;">
+                                <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-4" name="equip_group"><label class="form-check-label" for="formCheck-4">苍星战甲</label></div>
+                            </div>
+                        </div>
+                        <div class="col-4"><input class="form-control-sm" type="text" id="input-title" placeholder="搜索称号" style="width: 100%;">
+                            <div class="overflow-scroll" id="list-title" style="height: 300px;margin-top: 2px;padding: 2px;">
+                                <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-3" name="title_group"><label class="form-check-label" for="formCheck-3">苍星战甲</label></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row d-flex flex-row justify-content-center align-items-center" style="margin-top: 3px;">
+                        <div class="col-4 d-flex justify-content-center align-items-center"><button class="btn btn-primary" id="btn-confirm-suit" type="button" style="font-size: 100%;">确认切换</button></div>
+                        <div class="col-8 d-flex flex-row justify-content-end align-items-center">
+                            <div class="d-flex" id="suit-preview-container" style="height: 194px;width: 194px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button></div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/SuitXMLInfo.js"></script>
+    <script src="assets/js/ItemSeXMLInfo.js"></script>
+    <script src="assets/js/Sortable.min.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/app-controller.js"></script>
+    <script src="assets/js/custom-sortable.js"></script>
+</body>
+
+</html>
